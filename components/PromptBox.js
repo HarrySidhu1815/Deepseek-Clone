@@ -1,10 +1,13 @@
 import { assets } from '@/assets/assets'
-import React from 'react'
+import Image from 'next/image'
+import React, { useState } from 'react'
 
-const PromptBox = () => {
+const PromptBox = ({setIsLoading, isLoading}) => {
+
+    const [prompt, setPrompt] = useState('')
   return (
     <form className={`w-full ${false ? 'max-w-3xl' : 'max-w-2xl'} bg-[#404045] p-4 rounded-3xl mt-4 transition-all`}>
-      <textarea className='outline-none w-full resize-none overflow-hidden break-words bg-transparent' rows={2} placeholder='Message Deepseek' required/>
+      <textarea onChange={(e) => setPrompt(e.target.value)} value={prompt} className='outline-none w-full resize-none overflow-hidden break-words bg-transparent' rows={2} placeholder='Message Deepseek' required/>
 
       <div className='flex items-center justify-between text-sm'>
         <div className='flex items-center gap-2'>
@@ -19,8 +22,8 @@ const PromptBox = () => {
         </div>
         <div className='flex items-center gap-2'>
             <Image className='w-4 cursor-pointer' src={assets.pin_icon} alt=''/>
-            <button>
-                <Image className='w-4 cursor-pointer' src={assets.pin_icon} alt=''/>
+            <button className={`${prompt ? 'bg-primary' : 'bg-[#71717a]'} rounded-full p-2 cursor-pointer`}>
+                <Image className='w-3.5 aspect-square' src={prompt ? assets.arrow_icon : assets.arrow_icon_dull} alt=''/>
             </button>
         </div>
       </div>
