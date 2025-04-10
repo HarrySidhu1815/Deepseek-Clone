@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useClerk, UserButton } from '@clerk/nextjs'
 import { useAppContext } from '@/context/AppContext'
+import ClassLabel from './ClassLabel'
 
 const Sidebar = ({expand, setExpand}) => {
 
@@ -40,7 +41,7 @@ const Sidebar = ({expand, setExpand}) => {
 
         <div className={`mt-8 text-white/25 text-sm ${expand ? "block" : "hidden"}`}>
             <p className='my-1'>Recents</p>
-            {/* -------- chat labels --------*/}
+            <ClassLabel />
         </div>
       </div>
 
