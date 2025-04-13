@@ -9,7 +9,7 @@ export async function POST(req){
         const { chatId } = await req.json()
 
         if(!userId){
-            return NextResponse.json({sucess: false, message: "User not Authorized"})
+            return NextResponse.json({success: false, message: "User not Authorized"})
         }
 
         // Connect to the database and delete the chat
@@ -17,7 +17,7 @@ export async function POST(req){
         await connectDb()
         await Chat.deleteOne({_id: chatId, userId})
 
-        return NextResponse.json({sucess: true, message: "Chat Deleted"})
+        return NextResponse.json({success: true, message: "Chat Deleted"})
 
     } catch (error) {
         return NextResponse.json({success: false, message: error.message})

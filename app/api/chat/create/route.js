@@ -8,7 +8,7 @@ export async function POST(req){
         const { userId } = getAuth(req)
 
         if(!userId){
-            return NextResponse.json({sucess: false, message: "User not Authorized"})
+            return NextResponse.json({success: false, message: "User not Authorized"})
         }
 
         // Prepare the chat data to be saved in the database
